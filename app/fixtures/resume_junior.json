@@ -1,0 +1,96 @@
+{
+  "user_id": 103,
+  "fullname": "Alex Kowalski",
+  "professional_title": "Junior Graphics Programmer",
+  "summary": "Enthusiastic junior developer passionate about real-time computer graphics, rendering algorithms, and shader programming. Skilled in C++, Python, and GLSL, with a strong focus on learning modern graphics APIs and game engine architecture. Actively contributing to open-source projects and building a solid portfolio through internships and personal experiments.",
+  "location": "Gdansk, Poland",
+  "phone": "+48 502 789 123",
+  "image_url": "https://example.com/images/alex_kowalski.jpg",
+  "experiences": [
+    {
+      "job_title": "Graphics Programming Intern",
+      "company": "RenderTech Studio",
+      "location": "Remote",
+      "start_date": "2024-07-01",
+      "end_date": "2024-09-30",
+      "description": "Worked with the rendering team to implement prototype post-processing effects in the in-house engine. Focused on bloom, tone mapping, and ambient occlusion.",
+      "challenge": "Adapted the prototype code to run efficiently on low-end GPUs."
+    },
+    {
+      "job_title": "Game Development Intern",
+      "company": "Indie Games Lab",
+      "location": "Warsaw",
+      "start_date": "2023-07-01",
+      "end_date": "2023-09-30",
+      "description": "Assisted in integrating 2D and 3D assets into Unity scenes. Wrote small gameplay scripts in C# and optimized lighting settings for better performance.",
+      "challenge": "Reduced frame time in a complex scene by adjusting shadow cascade parameters."
+    }
+  ],
+  "education": [
+    {
+      "degree": "BSc",
+      "school": "Gdansk University of Technology",
+      "field_of_study": "Computer Science",
+      "location": "Gdansk",
+      "start_date": "2022-10-01",
+      "end_date": null,
+      "description": "Specialization in computer graphics and game development. Courses include real-time rendering, GPU programming, and computational geometry."
+    }
+  ],
+  "skills": [
+    {"name": "C++", "level": "intermediate"},
+    {"name": "Python", "level": "intermediate"},
+    {"name": "GLSL", "level": "intermediate"},
+    {"name": "OpenGL", "level": "intermediate"},
+    {"name": "Unity", "level": "intermediate"},
+    {"name": "Blender", "level": "intermediate"},
+    {"name": "Git", "level": "intermediate"}
+  ],
+  "projects": [
+    {
+      "name": "OpenGL Renderer",
+      "description": "A custom OpenGL-based renderer supporting Phong shading, normal mapping, and simple shadow mapping. Built from scratch to deepen understanding of rendering pipelines.",
+      "link": "https://github.com/alex-kowalski/opengl-renderer",
+      "tech_stack": ["C++", "OpenGL", "GLSL"]
+    },
+    {
+      "name": "Ray Tracer in Python",
+      "description": "Implemented a basic CPU ray tracer capable of handling reflections, refractions, and multiple light sources.",
+      "link": "https://github.com/alex-kowalski/python-raytracer",
+      "tech_stack": ["Python", "NumPy"]
+    },
+    {
+      "name": "Shader Experiments",
+      "description": "A collection of GLSL shaders experimenting with procedural textures, water effects, and post-processing filters.",
+      "link": "https://github.com/alex-kowalski/shader-experiments",
+      "tech_stack": ["GLSL", "OpenGL"]
+    }
+  ],
+  "social_links": [
+    {
+      "url": "https://github.com/alex-kowalski",
+      "platform": "GitHub",
+      "description": "Open-source projects and personal experiments."
+    },
+    {
+      "url": "https://linkedin.com/in/alex-kowalski",
+      "platform": "LinkedIn",
+      "description": "Professional profile and career aspirations."
+    }
+  ],
+  "certificates": [
+    {
+      "issuer": "Udemy",
+      "name": "Computer Graphics with Modern OpenGL and C++",
+      "date_issued": "2024-05-10",
+      "description": "Course covering OpenGL rendering pipeline, GLSL shaders, and modern C++ graphics programming techniques.",
+      "link": "https://www.udemy.com/certificate/UC-example"
+    }
+  ],
+  "languages": [
+    {"name": "Polish", "level": "native"},
+    {"name": "English", "level": "B2"}
+  ],
+  "created_at": "2025-02-15T09:00:00",
+  "updated_at": "2025-02-15T09:00:00"
+}

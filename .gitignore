@@ -1,0 +1,9 @@
+.venv
+
+.DS_Store
+.idea
+app/.DS_Store
+app/__pycache__
+app/models/__pycache__
+app/templates/__pycache__
+app/templates/helpers/__pycache__

@@ -1,0 +1,111 @@
+{
+  "user_id": 104,
+  "fullname": "Julia Lewandowska",
+  "professional_title": "Mid-level Backend Developer",
+  "summary": "Backend engineer focused on distributed systems, event-driven architectures, and data-intensive services. Experienced with Python and Go, Kafka-based messaging, gRPC/REST APIs, and relational/non-relational databases. Comfortable designing resilient services, writing load/perf tests, and operating workloads on Kubernetes with proper observability.",
+  "location": "Krakow, Poland",
+  "phone": "+48 507 321 789",
+  "image_url": "https://example.com/images/julia_lewandowska.jpg",
+  "experiences": [
+    {
+      "job_title": "Backend Engineer",
+      "company": "SaaSScale Sp. z o.o.",
+      "location": "Remote",
+      "start_date": "2022-06-01",
+      "end_date": null,
+      "description": "Owned backend services in a microservices environment. Designed and implemented gRPC services in Go and Python (FastAPI) to power a real-time analytics dashboard. Introduced Kafka-based ingestion for high-throughput event streams (~70k msgs/s sustained), added idempotent consumers, schema validation (Confluent Schema Registry), and dead-letter queues. Tuned Postgres queries with proper indexing and partitioning; reduced p95 API latency by ~35%.",
+      "challenge": "Led a zero-downtime migration of a multi-tenant billing service from REST-only to hybrid REST/gRPC, coordinating phased client rollouts and dual-write consistency across Kafka topics."
+    },
+    {
+      "job_title": "Junior Backend Developer",
+      "company": "LogiCloud",
+      "location": "Warsaw",
+      "start_date": "2020-01-01",
+      "end_date": "2022-05-31",
+      "description": "Implemented internal APIs and background workers for a logistics platform. Built ETL jobs ingesting partner data (S3 + Airflow), added CDC pipelines from Postgres to Elasticsearch for search and reporting, and introduced integration tests with docker-compose to stabilize CI. Helped instrument services with OpenTelemetry and standardized structured logging.",
+      "challenge": "Reduced synchronization lag from 10 minutes to under 90 seconds by switching from cron-style polling to Debezium-based CDC with backpressure-aware consumers."
+    }
+  ],
+  "education": [
+    {
+      "degree": "BSc",
+      "school": "AGH University of Science and Technology",
+      "field_of_study": "Computer Science",
+      "location": "Krakow",
+      "start_date": "2015-10-01",
+      "end_date": "2019-06-30",
+      "description": "Coursework in distributed systems, databases, and operating systems. Final project: fault-tolerant job queue with leader election and at-least-once delivery guarantees."
+    }
+  ],
+  "skills": [
+    {"name": "Python", "level": "advanced"},
+    {"name": "Go", "level": "advanced"},
+    {"name": "FastAPI", "level": "advanced"},
+    {"name": "gRPC", "level": "advanced"},
+    {"name": "Kafka", "level": "advanced"},
+    {"name": "PostgreSQL", "level": "advanced"},
+    {"name": "Redis", "level": "advanced"},
+    {"name": "Elasticsearch", "level": "intermediate"},
+    {"name": "MongoDB", "level": "intermediate"},
+    {"name": "Docker", "level": "advanced"},
+    {"name": "Kubernetes", "level": "intermediate"},
+    {"name": "Terraform", "level": "intermediate"},
+    {"name": "AWS", "level": "intermediate"},
+    {"name": "Prometheus/Grafana", "level": "intermediate"},
+    {"name": "Git", "level": "advanced"}
+  ],
+  "projects": [
+    {
+      "name": "Event-Sourced Orders Service",
+      "description": "Microservice implementing event sourcing for order lifecycle with snapshotting, outbox pattern, and exactly-once semantics at the consumer level.",
+      "link": "https://github.com/example/event-sourced-orders",
+      "tech_stack": ["Go", "Kafka", "PostgreSQL", "gRPC", "Docker"]
+    },
+    {
+      "name": "CDC to Search",
+      "description": "Change Data Capture pipeline that streams Postgres changes to Elasticsearch with schema evolution handling and replay capability.",
+      "link": "https://github.com/example/cdc-to-search",
+      "tech_stack": ["Python", "Debezium", "Kafka Connect", "Elasticsearch"]
+    },
+    {
+      "name": "Performance Toolkit",
+      "description": "CLI and library for load testing gRPC/HTTP services and generating SLO-oriented reports with p50/p95/p99 latencies.",
+      "link": "https://github.com/example/perf-toolkit",
+      "tech_stack": ["Go", "k6", "Prometheus"]
+    }
+  ],
+  "social_links": [
+    {
+      "url": "https://github.com/julia-lewandowska",
+      "platform": "GitHub",
+      "description": "Backend services, data pipelines, and infrastructure tooling."
+    },
+    {
+      "url": "https://linkedin.com/in/julia-lewandowska",
+      "platform": "LinkedIn",
+      "description": "Professional profile, projects, and certifications."
+    }
+  ],
+  "certificates": [
+    {
+      "issuer": "Amazon Web Services",
+      "name": "AWS Certified Developer – Associate",
+      "date_issued": "2023-08-20",
+      "description": "Validated skills in developing, deploying, and debugging cloud-based applications on AWS.",
+      "link": "https://aws.amazon.com/certification"
+    },
+    {
+      "issuer": "Confluent",
+      "name": "Apache Kafka Fundamentals",
+      "date_issued": "2024-03-12",
+      "description": "Concepts of distributed streaming, Kafka internals, schema management, and stream processing patterns.",
+      "link": "https://www.confluent.io"
+    }
+  ],
+  "languages": [
+    {"name": "Polish", "level": "native"},
+    {"name": "English", "level": "C1"}
+  ],
+  "created_at": "2025-03-01T10:00:00",
+  "updated_at": "2025-03-01T10:00:00"
+}

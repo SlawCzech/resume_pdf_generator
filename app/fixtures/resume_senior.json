@@ -1,0 +1,147 @@
+{
+  "user_id": 102,
+  "fullname": "Mark Nowicki",
+  "professional_title": "Senior Data Engineer / Quantitative Analyst",
+  "summary": "Senior Python Developer and Data Engineer with over a decade of experience in processing, analyzing, and modeling financial market data. Specialized in Pandas, Polars, and high-performance numerical computations for trading and risk management systems. Proven track record in designing end-to-end ETL pipelines, implementing derivative pricing models, and integrating analytics platforms with execution and trading systems. Skilled in optimizing large-scale data workflows, building real-time risk monitoring tools, and delivering analytics platforms for front-office teams.",
+  "location": "Warsaw, Poland",
+  "phone": "+48 501 234 567",
+  "image_url": "https://example.com/images/mark_nowicki.jpg",
+  "experiences": [
+    {
+      "job_title": "Senior Data Engineer / Quant Developer",
+      "company": "FinTech Analytics S.A.",
+      "location": "Warsaw",
+      "start_date": "2020-01-01",
+      "end_date": null,
+      "description": "Led the migration of the entire analytics infrastructure from Pandas to Polars, achieving a 60% reduction in processing time. Designed and deployed high-performance modules for portfolio risk analytics, including Value at Risk (VaR), Monte Carlo Simulation, and stress testing. Built and maintained ETL pipelines for tick-level equities, FX, and derivatives data from multiple vendors. Developed custom libraries for time-series analytics and implemented integration with execution management systems (EMS).",
+      "challenge": "Coordinated a cross-functional effort between data engineering, quant, and DevOps teams to ensure a seamless migration of risk analytics pipelines without interrupting production trading operations."
+    },
+    {
+      "job_title": "Python Developer – Financial Data",
+      "company": "Global Investment Bank",
+      "location": "London, UK",
+      "start_date": "2016-03-01",
+      "end_date": "2019-12-31",
+      "description": "Created analytical tools for front-office traders, integrating real-time market feeds from Bloomberg, Reuters, and internal APIs. Designed automated reporting solutions for FX and fixed-income desks. Developed correlation and volatility models for cross-asset analysis. Built an advanced backtesting platform for systematic trading strategies, optimized for multi-core execution and in-memory computation of datasets exceeding 500 GB.",
+      "challenge": "Delivered a low-latency arbitrage detection module capable of analyzing streaming tick data in under 50 ms end-to-end."
+    },
+    {
+      "job_title": "Data Analyst / Python Developer",
+      "company": "Warsaw Stock Exchange – GPW",
+      "location": "Warsaw",
+      "start_date": "2013-06-01",
+      "end_date": "2016-02-28",
+      "description": "Designed and implemented visualization dashboards for real-time trading data. Optimized SQL queries to improve report generation by over 80%. Created automation scripts for daily and intraday reporting processes. Collaborated on the development of real-time market surveillance systems to detect anomalies and potential market abuse.",
+      "challenge": "Built the first intraday market activity monitoring system for GPW, allowing for real-time alerts to compliance and market supervision teams."
+    },
+    {
+      "job_title": "Junior Data Analyst",
+      "company": "TechMetrics Consulting",
+      "location": "Warsaw",
+      "start_date": "2011-07-01",
+      "end_date": "2013-05-31",
+      "description": "Supported senior analysts in processing large datasets from financial and retail sectors. Built initial ETL pipelines for structured and unstructured data. Developed Python scripts for statistical analysis and business intelligence reporting.",
+      "challenge": "Standardized data collection and cleaning processes, reducing client report preparation time from days to hours."
+    }
+  ],
+  "education": [
+    {
+      "degree": "MSc Eng.",
+      "school": "Warsaw University of Technology",
+      "field_of_study": "Applied Computer Science",
+      "location": "Warsaw",
+      "start_date": "2008-10-01",
+      "end_date": "2013-06-30",
+      "description": "Specialization: Information systems in finance and banking. Master's thesis: 'Implementation of Exotic Option Pricing Models in Python', including Monte Carlo and finite difference methods."
+    }
+  ],
+  "skills": [
+    {"name": "Python", "level": "expert"},
+    {"name": "Pandas", "level": "expert"},
+    {"name": "Polars", "level": "expert"},
+    {"name": "NumPy", "level": "advanced"},
+    {"name": "Numba", "level": "advanced"},
+    {"name": "SQL", "level": "advanced"},
+    {"name": "PostgreSQL", "level": "advanced"},
+    {"name": "Git", "level": "advanced"},
+    {"name": "Docker", "level": "intermediate"},
+    {"name": "AWS", "level": "intermediate"},
+    {"name": "Kafka", "level": "intermediate"},
+    {"name": "Data Modeling", "level": "advanced"},
+    {"name": "ETL Pipelines", "level": "expert"}
+  ],
+  "projects": [
+    {
+      "name": "High-Performance Market Data Pipeline",
+      "description": "Developed a real-time ETL pipeline for equities and derivatives market data. Used Polars for high-speed batch processing and WebSocket streaming for live updates. Reduced latency from raw feed to analytics dashboard to under 200 ms.",
+      "link": "https://github.com/example/market-data-pipeline",
+      "tech_stack": ["Python", "Polars", "Kafka", "PostgreSQL", "AWS S3"]
+    },
+    {
+      "name": "Risk Analytics Platform",
+      "description": "End-to-end portfolio risk assessment platform with VaR, stress testing, and scenario analysis modules. Integrated with trading desks for real-time exposure monitoring.",
+      "link": "https://example.com/risk-analytics",
+      "tech_stack": ["Python", "Pandas", "NumPy", "Dash", "Plotly", "PostgreSQL"]
+    },
+    {
+      "name": "Financial Computation Library",
+      "description": "Open-source library for high-performance financial computations using vectorized operations in Pandas, Polars, and NumPy.",
+      "link": "https://github.com/example/fincomp-lib",
+      "tech_stack": ["Python", "Pandas", "Polars", "Numba"]
+    },
+    {
+      "name": "Intraday Market Surveillance Tool",
+      "description": "Real-time monitoring system for detecting unusual trading patterns and potential market manipulation at GPW.",
+      "link": "https://example.com/market-surveillance",
+      "tech_stack": ["Python", "Pandas", "SQL", "Plotly"]
+    },
+    {
+      "name": "Quant Strategy Backtesting Engine",
+      "description": "Low-latency backtesting platform for statistical arbitrage and momentum strategies. Optimized for multi-core processing with parallel computation.",
+      "link": "https://github.com/example/backtesting-engine",
+      "tech_stack": ["Python", "NumPy", "Pandas", "Cython", "Dask"]
+    }
+  ],
+  "social_links": [
+    {
+      "url": "https://github.com/marknowicki",
+      "platform": "GitHub",
+      "description": "Open-source projects and financial analytics tools."
+    },
+    {
+      "url": "https://linkedin.com/in/marknowicki",
+      "platform": "LinkedIn",
+      "description": "Professional profile and career achievements."
+    }
+  ],
+  "certificates": [
+    {
+      "issuer": "AWS",
+      "name": "AWS Certified Solutions Architect – Associate",
+      "date_issued": "2023-11-10",
+      "description": "Credential validating expertise in designing and deploying scalable systems on AWS.",
+      "link": "https://aws.amazon.com/certification"
+    },
+    {
+      "issuer": "CFA Institute",
+      "name": "Investment Foundations Certificate",
+      "date_issued": "2022-06-05",
+      "description": "Credential covering key concepts in investment analysis, ethics, and portfolio management.",
+      "link": "https://www.cfainstitute.org"
+    },
+    {
+      "issuer": "Linux Foundation",
+      "name": "Certified Kubernetes Application Developer (CKAD)",
+      "date_issued": "2021-04-12",
+      "description": "Credential proving ability to design, build, and run cloud-native applications on Kubernetes.",
+      "link": "https://training.linuxfoundation.org/certification"
+    }
+  ],
+  "languages": [
+    {"name": "Polish", "level": "native"},
+    {"name": "English", "level": "C1"},
+    {"name": "German", "level": "B1"}
+  ],
+  "created_at": "2025-02-01T09:00:00",
+  "updated_at": "2025-08-12T14:00:00"
+}

@@ -34,27 +34,27 @@ class VibrantTemplate:
         # header
         self.h_name = ParagraphStyle(
             "h_name", parent=base["Heading1"],
-            fontName="Nata-Bold", fontSize=22, leading=24,
+            fontName="SourceSans-Bold", fontSize=22, leading=24,
             textColor=self.colors["ink"], spaceAfter=2
         )
         self.h_title = ParagraphStyle(
             "h_title", parent=base["BodyText"],
-            fontName="Nata", fontSize=10.5, leading=14,
+            fontName="SourceSans", fontSize=10.5, leading=14,
             textColor=self.colors["muted"], spaceAfter=6
         )
         self.meta = ParagraphStyle(
             "meta", parent=base["BodyText"],
-            fontName="Nata", fontSize=9, leading=12,
+            fontName="SourceSans", fontSize=9, leading=12,
             textColor=self.colors["muted"]
         )
         self.body = ParagraphStyle(
             "body", parent=base["BodyText"],
-            fontName="Nata", fontSize=9.8, leading=13.2,
+            fontName="SourceSans", fontSize=9.8, leading=13.2,
             textColor=self.colors["ink"]
         )
         self.h_left = ParagraphStyle(
             "h_left", parent=base["Heading2"],
-            fontName="Nata-Bold", fontSize=10.5, leading=14,
+            fontName="SourceSans-Bold", fontSize=10.5, leading=14,
             textColor=self.colors["accent"], spaceBefore=0, spaceAfter=0
         )
 

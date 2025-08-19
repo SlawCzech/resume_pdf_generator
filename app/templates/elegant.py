@@ -1,5 +1,11 @@
 from reportlab.platypus import (
-    Paragraph, Spacer, HRFlowable, Frame, PageTemplate, FrameBreak, NextPageTemplate
+    Paragraph,
+    Spacer,
+    HRFlowable,
+    Frame,
+    PageTemplate,
+    FrameBreak,
+    NextPageTemplate,
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.pagesizes import A4
@@ -30,31 +36,58 @@ class ElegantTemplate:
             "blue_accent": colors.HexColor("#0052be"),
         }
         self.h_name = ParagraphStyle(
-            "h_name", parent=base["Heading1"],
-            fontName="Merriweather", fontSize=24, leading=22,
-            textColor=self.colors["ink"], spaceAfter=2
+            "h_name",
+            parent=base["Heading1"],
+            fontName="Merriweather",
+            fontSize=24,
+            leading=22,
+            textColor=self.colors["ink"],
+            spaceAfter=2,
         )
         self.h_title = ParagraphStyle(
-            "h_title", parent=base["BodyText"],
-            fontName="Roboto", fontSize=10.5, leading=14,
-            textColor=self.colors["muted"], spaceAfter=6
+            "h_title",
+            parent=base["BodyText"],
+            fontName="Roboto",
+            fontSize=10.5,
+            leading=14,
+            textColor=self.colors["muted"],
+            spaceAfter=6,
         )
         self.h_sec = ParagraphStyle(
-            "h_sec", parent=base["Heading2"],
-            fontName="Merriweather", fontSize=10.5, leading=14,
-            textColor=self.colors["blue_accent"], spaceBefore=6, spaceAfter=4
+            "h_sec",
+            parent=base["Heading2"],
+            fontName="Merriweather",
+            fontSize=10.5,
+            leading=14,
+            textColor=self.colors["blue_accent"],
+            spaceBefore=6,
+            spaceAfter=4,
         )
         self.body = ParagraphStyle(
-            "body", parent=base["BodyText"],
-            fontName="Roboto", fontSize=9.8, leading=13.2, textColor=self.colors["ink"]
+            "body",
+            parent=base["BodyText"],
+            fontName="Roboto",
+            fontSize=9.8,
+            leading=13.2,
+            textColor=self.colors["ink"],
         )
         self.meta = ParagraphStyle(
-            "meta", parent=self.body,
-            fontName="Roboto", fontSize=9, leading=12, textColor=self.colors["muted"]
+            "meta",
+            parent=self.body,
+            fontName="Roboto",
+            fontSize=9,
+            leading=12,
+            textColor=self.colors["muted"],
         )
 
     def _rule(self, thickness=0.6):
-        return HRFlowable(width="100%", color=self.colors["rule"], thickness=thickness, spaceBefore=2, spaceAfter=6)
+        return HRFlowable(
+            width="100%",
+            color=self.colors["rule"],
+            thickness=thickness,
+            spaceBefore=2,
+            spaceAfter=6,
+        )
 
     def _section_title(self, text: str) -> list:
         return [Paragraph(text.upper(), self.h_sec), self._rule(0.5)]
@@ -76,17 +109,31 @@ class ElegantTemplate:
         s: list = []
         if getattr(data, "skills", None):
             s += self._section_title("Skills")
-            s.append(Paragraph(
-                ", ".join([f"{x.name}{f' ({x.level})' if x.level else ''}" for x in data.skills]),
-                self.body
-            ))
+            s.append(
+                Paragraph(
+                    ", ".join(
+                        [
+                            f"{x.name}{f' ({x.level})' if x.level else ''}"
+                            for x in data.skills
+                        ]
+                    ),
+                    self.body,
+                )
+            )
             s.append(Spacer(1, 6))
         if getattr(data, "languages", None):
             s += self._section_title("Languages")
-            s.append(Paragraph(
-                ", ".join([f"{l.name}{f' ({l.level})' if l.level else ''}" for l in data.languages]),
-                self.body
-            ))
+            s.append(
+                Paragraph(
+                    ", ".join(
+                        [
+                            f"{l.name}{f' ({l.level})' if l.level else ''}"
+                            for l in data.languages
+                        ]
+                    ),
+                    self.body,
+                )
+            )
             s.append(Spacer(1, 6))
             if getattr(data, "certificates", None):
                 s += self._section_title("Certificates")
@@ -101,7 +148,9 @@ class ElegantTemplate:
                     )
 
                     if issuer and getattr(c, "link", None):
-                        issuer_link = f"<link href='{c.link}' color='darkblue'>{issuer}</link>"
+                        issuer_link = (
+                            f"<link href='{c.link}' color='darkblue'>{issuer}</link>"
+                        )
                     else:
                         issuer_link = issuer
 
@@ -115,7 +164,8 @@ class ElegantTemplate:
             for sl in data.social_links:
                 text = sl.platform or "Profile"
                 text = f"<link href='{sl.url}' color='darkblue'>{text}</link>"
-                if sl.description: text += f" — {sl.description}"
+                if sl.description:
+                    text += f" — {sl.description}"
                 s.append(Paragraph(text, self.body))
             s.append(Spacer(1, 6))
         return s
@@ -126,15 +176,18 @@ class ElegantTemplate:
             s += self._section_title("Profile")
             s.append(Paragraph(data.summary, self.body))
             s.append(Spacer(1, 8))
-        if getattr(data, "experiences", None):
+        if getattr(data, "experience", None):
             s += self._section_title("Experience")
-            for exp in data.experiences:
+            for exp in data.experience:
                 left = f"{exp.company}" + (f", {exp.location}" if exp.location else "")
                 s.append(Paragraph(f"{left} — <b>{exp.job_title}</b>", self.body))
                 rng = fmt_range(exp.start_date, exp.end_date)
-                if rng: s.append(Paragraph(rng.upper(), self.meta))
-                if exp.description: s.append(Paragraph(exp.description, self.body))
-                if exp.challenge: s.append(Paragraph(f"<i>Challenge:</i> {exp.challenge}", self.body))
+                if rng:
+                    s.append(Paragraph(rng.upper(), self.meta))
+                if exp.description:
+                    s.append(Paragraph(exp.description, self.body))
+                if exp.challenge:
+                    s.append(Paragraph(f"<i>Challenge:</i> {exp.challenge}", self.body))
                 s.append(Spacer(1, 6))
         if getattr(data, "education", None):
             s += self._section_title("Education")
@@ -143,18 +196,24 @@ class ElegantTemplate:
                 title = f"{left} — <b>{ed.degree}</b>" if ed.degree else left
                 s.append(Paragraph(title, self.body))
                 rng = fmt_range(ed.start_date, ed.end_date)
-                if rng: s.append(Paragraph(rng.upper(), self.meta))
-                if ed.field_of_study: s.append(Paragraph(ed.field_of_study, self.meta))
-                if ed.description: s.append(Paragraph(ed.description, self.body))
+                if rng:
+                    s.append(Paragraph(rng.upper(), self.meta))
+                if ed.field_of_study:
+                    s.append(Paragraph(ed.field_of_study, self.meta))
+                if ed.description:
+                    s.append(Paragraph(ed.description, self.body))
                 s.append(Spacer(1, 6))
         if getattr(data, "projects", None):
             s += self._section_title("Projects")
             for p in data.projects:
                 title = p.name
-                if p.link: title = f"<link href='{p.link}' color='darkblue'>{p.name}</link>"
+                if p.link:
+                    title = f"<link href='{p.link}' color='darkblue'>{p.name}</link>"
                 s.append(Paragraph(title, self.body))
-                if p.tech_stack: s.append(Paragraph(", ".join(p.tech_stack), self.meta))
-                if p.description: s.append(Paragraph(p.description, self.body))
+                if p.tech_stack:
+                    s.append(Paragraph(", ".join(p.tech_stack), self.meta))
+                if p.description:
+                    s.append(Paragraph(p.description, self.body))
                 s.append(Spacer(1, 6))
         return s
 
@@ -166,7 +225,7 @@ class ElegantTemplate:
         story += self._left_story(data)
         story.append(FrameBreak())
 
-        story.append(NextPageTemplate('RightOnly'))
+        story.append(NextPageTemplate("RightOnly"))
 
         story += self._right_story(data)
         return story
@@ -197,9 +256,17 @@ class ElegantTemplate:
             showBoundary=0,
         )
 
-        first = PageTemplate(id="TwoColFirst", frames=[header_frame, left_frame, right_frame])
+        first = PageTemplate(
+            id="TwoColFirst", frames=[header_frame, left_frame, right_frame]
+        )
 
-        full_frame = Frame(self.ML, self.MB, self.PAGE_W - self.ML - self.MR, self.PAGE_H - self.MT - self.MB, id="full")
+        full_frame = Frame(
+            self.ML,
+            self.MB,
+            self.PAGE_W - self.ML - self.MR,
+            self.PAGE_H - self.MT - self.MB,
+            id="full",
+        )
         right_only = PageTemplate(id="RightOnly", frames=[full_frame])
 
         return [first, right_only]

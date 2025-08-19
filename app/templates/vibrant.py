@@ -1,6 +1,12 @@
 from reportlab.platypus import (
-    Paragraph, Spacer, HRFlowable, Frame, PageTemplate, NextPageTemplate,
-    Table, TableStyle
+    Paragraph,
+    Spacer,
+    HRFlowable,
+    Frame,
+    PageTemplate,
+    NextPageTemplate,
+    Table,
+    TableStyle,
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.pagesizes import A4
@@ -33,40 +39,59 @@ class VibrantTemplate:
 
         # header
         self.h_name = ParagraphStyle(
-            "h_name", parent=base["Heading1"],
-            fontName="SourceSans-Bold", fontSize=22, leading=24,
-            textColor=self.colors["ink"], spaceAfter=2
+            "h_name",
+            parent=base["Heading1"],
+            fontName="SourceSans-Bold",
+            fontSize=22,
+            leading=24,
+            textColor=self.colors["ink"],
+            spaceAfter=2,
         )
         self.h_title = ParagraphStyle(
-            "h_title", parent=base["BodyText"],
-            fontName="SourceSans", fontSize=10.5, leading=14,
-            textColor=self.colors["muted"], spaceAfter=6
+            "h_title",
+            parent=base["BodyText"],
+            fontName="SourceSans",
+            fontSize=10.5,
+            leading=14,
+            textColor=self.colors["muted"],
+            spaceAfter=6,
         )
         self.meta = ParagraphStyle(
-            "meta", parent=base["BodyText"],
-            fontName="SourceSans", fontSize=9, leading=12,
-            textColor=self.colors["muted"]
+            "meta",
+            parent=base["BodyText"],
+            fontName="SourceSans",
+            fontSize=9,
+            leading=12,
+            textColor=self.colors["muted"],
         )
         self.body = ParagraphStyle(
-            "body", parent=base["BodyText"],
-            fontName="SourceSans", fontSize=9.8, leading=13.2,
-            textColor=self.colors["ink"]
+            "body",
+            parent=base["BodyText"],
+            fontName="SourceSans",
+            fontSize=9.8,
+            leading=13.2,
+            textColor=self.colors["ink"],
         )
         self.h_left = ParagraphStyle(
-            "h_left", parent=base["Heading2"],
-            fontName="SourceSans-Bold", fontSize=10.5, leading=14,
-            textColor=self.colors["accent"], spaceBefore=0, spaceAfter=0
+            "h_left",
+            parent=base["Heading2"],
+            fontName="SourceSans-Bold",
+            fontSize=10.5,
+            leading=14,
+            textColor=self.colors["accent"],
+            spaceBefore=0,
+            spaceAfter=0,
         )
 
         self.SECTION_ORDER = [
-            ("Profile",      self._profile,      "summary"),
-            ("Experience",   self._experience,   "experiences"),
-            ("Education",    self._education,    "education"),
-            ("Projects",     self._projects,     "projects"),
-            ("Skills",       self._skills,       "skills"),
+            ("Profile", self._profile, "summary"),
+            ("Experience", self._experience, "experience"),
+            ("Education", self._education, "education"),
+            ("Projects", self._projects, "projects"),
+            ("Skills", self._skills, "skills"),
             ("Certificates", self._certificates, "certificates"),
-            ("Languages",    self._languages,    "languages"),
-            ("Social",       self._social,       "social_links"),
+            ("Languages", self._languages, "languages"),
+            ("Social", self._social, "social_links"),
         ]
 
     def _header_story(self, data) -> list:
@@ -79,8 +104,15 @@ class VibrantTemplate:
         meta_line = " · ".join([b for b in meta_bits if b])
         if meta_line:
             s.append(Paragraph(meta_line, self.meta))
-        s.append(HRFlowable(width="100%", color=self.colors["rule_strong"], thickness=0.8,
-                            spaceBefore=4, spaceAfter=8))
+        s.append(
+            HRFlowable(
+                width="100%",
+                color=self.colors["rule_strong"],
+                thickness=0.8,
+                spaceBefore=4,
+                spaceAfter=8,
+            )
+        )
         return s
 
     def _clean_items(self, items):
@@ -99,7 +131,7 @@ class VibrantTemplate:
 
     def _experience(self, data):
         rows = []
-        for exp in getattr(data, "experiences", []):
+        for exp in getattr(data, "experience", []):
             left = f"{exp.company}" + (f", {exp.location}" if exp.location else "")
             rows.append(Paragraph(f"{left} — <b>{exp.job_title}</b>", self.body))
             rng = fmt_range(exp.start_date, exp.end_date)
@@ -131,7 +163,9 @@ class VibrantTemplate:
         for p in getattr(data, "projects", []):
             name = p.name or "Project"
             if getattr(p, "link", None):
-                name_html = f"<link href='{p.link}'><font color='#6B7280'>{name}</font></link>"
+                name_html = (
+                    f"<link href='{p.link}'><font color='#6B7280'>{name}</font></link>"
+                )
             else:
                 name_html = name
             rows.append(Paragraph(name_html, self.body))
@@ -142,10 +176,17 @@ class VibrantTemplate:
         return self._clean_items(rows)
 
     def _skills(self, data):
-        return [Paragraph(
-            ", ".join([f"{x.name}{f' ({x.level})' if getattr(x, 'level', None) else ''}" for x in data.skills]),
-            self.body
-        )]
+        return [
+            Paragraph(
+                ", ".join(
+                    [
+                        f"{x.name}{f' ({x.level})' if getattr(x, 'level', None) else ''}"
+                        for x in data.skills
+                    ]
+                ),
+                self.body,
+            )
+        ]
 
     def _certificates(self, data):
         rows = []
@@ -153,7 +194,9 @@ class VibrantTemplate:
         for c in getattr(data, "certificates", []):
             name = c.name or ""
             issuer = c.issuer or ""
-            date_txt = fmt_mmyyyy(c.date_issued) if getattr(c, "date_issued", None) else ""
+            date_txt = (
+                fmt_mmyyyy(c.date_issued) if getattr(c, "date_issued", None) else ""
+            )
             if issuer and getattr(c, "link", None):
                 issuer_html = f"<link href='{c.link}'><font color='{LINK_COLOR}'>{issuer}</font></link>"
             else:
@@ -163,17 +206,26 @@ class VibrantTemplate:
         return self._clean_items(rows)
 
     def _languages(self, data):
-        return [Paragraph(
-            ", ".join([f"{l.name}{f' ({l.level})' if getattr(l, 'level', None) else ''}" for l in data.languages]),
-            self.body
-        )]
+        return [
+            Paragraph(
+                ", ".join(
+                    [
+                        f"{l.name}{f' ({l.level})' if getattr(l, 'level', None) else ''}"
+                        for l in data.languages
+                    ]
+                ),
+                self.body,
+            )
+        ]
 
     def _social(self, data):
         rows = []
         for sl in getattr(data, "social_links", []):
             label = sl.platform or "Profile"
             if getattr(sl, "url", None):
-                txt = f"<link href='{sl.url}'><font color='#6B7280'>{label}</font></link>"
+                txt = (
+                    f"<link href='{sl.url}'><font color='#6B7280'>{label}</font></link>"
+                )
             else:
                 txt = label
             if getattr(sl, "description", None):
@@ -192,8 +244,13 @@ class VibrantTemplate:
             for item in right_items[1:]:
                 rows.append(["", item])
 
-            sep = HRFlowable(width="100%", color=self.colors["rule_soft"],
-                             thickness=0.5, spaceBefore=0, spaceAfter=6)
+            sep = HRFlowable(
+                width="100%",
+                color=self.colors["rule_soft"],
+                thickness=0.5,
+                spaceBefore=0,
+                spaceAfter=6,
+            )
             rows.append(["", sep])
 
         for label, builder, attr in self.SECTION_ORDER:
@@ -205,7 +262,7 @@ class VibrantTemplate:
     def build_story(self, data) -> list:
         story: list = []
         story += self._header_story(data)
-        story.append(NextPageTemplate('Next'))
+        story.append(NextPageTemplate("Next"))
 
         table = Table(
             self._rows(data),
@@ -215,13 +272,17 @@ class VibrantTemplate:
             spaceBefore=0,
             spaceAfter=0,
         )
-        table.setStyle(TableStyle([
-            ("LEFTPADDING",  (0, 0), (-1, -1), 0),
-            ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-            ("TOPPADDING",   (0, 0), (-1, -1), 0),
-            ("BOTTOMPADDING",(0, 0), (-1, -1), 6),
-            ("VALIGN",       (0, 0), (-1, -1), "TOP"),
-        ]))
+        table.setStyle(
+            TableStyle(
+                [
+                    ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+                    ("TOPPADDING", (0, 0), (-1, -1), 0),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+                    ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ]
+            )
+        )
 
         story.append(table)
         return story

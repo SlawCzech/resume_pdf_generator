@@ -1,6 +1,7 @@
 import datetime as dt
 from pydantic import BaseModel, ConfigDict
 
+
 class Experience(BaseModel):
     job_title: str
     company: str

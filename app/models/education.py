@@ -1,6 +1,7 @@
 import datetime as dt
 from pydantic import BaseModel, ConfigDict
 
+
 class Education(BaseModel):
     degree: str | None = None
     school: str

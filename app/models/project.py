@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 
+
 class Project(BaseModel):
     name: str
     description: str | None = None

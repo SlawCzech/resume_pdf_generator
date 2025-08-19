@@ -8,4 +8,4 @@ WORKDIR /app
 RUN uv sync --frozen --no-cache
 
 
-CMD ["./.venv/bin/uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+CMD ["./.venv/bin/uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

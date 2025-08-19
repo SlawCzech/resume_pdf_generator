@@ -1,0 +1,10 @@
+{
+  "company": "CloudOps Hub",
+  "seniority": "Senior",
+  "work_model": "On-site (Berlin)",
+  "contract_type": "Full-time employment",
+  "description": "As a DevOps Engineer, you will lead the automation and reliability of our cloud infrastructure. We are scaling rapidly and need an expert in CI/CD, monitoring, and Kubernetes.",
+  "requirements": "- 5+ years of experience in DevOps or system administration\n- Deep knowledge of Kubernetes and Docker\n- Proficiency with CI/CD tools (Jenkins, GitLab CI/CD, or similar)\n- Experience with monitoring and logging tools",
+  "responsibilities": "- Design and implement CI/CD pipelines\n- Maintain and scale Kubernetes clusters\n- Automate infrastructure with IaC tools\n- Ensure high availability and system reliability",
+  "tech_tags": ["Kubernetes", "Docker", "Terraform", "AWS", "CI/CD", "Monitoring"]
+}

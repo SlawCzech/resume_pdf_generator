@@ -1,0 +1,10 @@
+{
+  "company": "CreativeApps Studio",
+  "seniority": "Junior",
+  "work_model": "Remote",
+  "contract_type": "UoP",
+  "description": "Join our frontend team to build interactive web applications for global clients in the creative industry. We value attention to detail and willingness to learn modern frontend technologies.",
+  "requirements": "- Basic knowledge of JavaScript, HTML, CSS\n- Understanding of React or similar framework\n- Eagerness to learn and develop new skills\n- Ability to work in a team and communicate clearly",
+  "responsibilities": "- Implement UI components based on design specs\n- Fix bugs and maintain existing codebase\n- Write simple unit tests\n- Collaborate with designers and backend developers",
+  "tech_tags": ["JavaScript", "React", "HTML", "CSS", "Git"]
+}

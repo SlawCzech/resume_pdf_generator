@@ -1,6 +1,4 @@
-from reportlab.platypus import (
-    Paragraph, Spacer, HRFlowable, Frame, PageTemplate
-)
+from reportlab.platypus import Paragraph, Spacer, HRFlowable, Frame, PageTemplate
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
@@ -27,29 +25,47 @@ class SimpleTemplate:
             "rule": colors.HexColor("#E5E7EB"),
         }
         self.h_name = ParagraphStyle(
-            "h_name", parent=base["Heading1"],
-            fontName="Roboto-Bold", fontSize=22, leading=24,
-            textColor=self.colors["ink"], spaceAfter=2
+            "h_name",
+            parent=base["Heading1"],
+            fontName="Roboto-Bold",
+            fontSize=22,
+            leading=24,
+            textColor=self.colors["ink"],
+            spaceAfter=2,
         )
         self.h_title = ParagraphStyle(
-            "h_title", parent=base["BodyText"],
-            fontName="SourceSans", fontSize=10.5, leading=14,
-            textColor=self.colors["muted"], spaceAfter=8
+            "h_title",
+            parent=base["BodyText"],
+            fontName="SourceSans",
+            fontSize=10.5,
+            leading=14,
+            textColor=self.colors["muted"],
+            spaceAfter=8,
         )
         self.h_meta = ParagraphStyle(
-            "h_meta", parent=base["BodyText"],
-            fontName="SourceSans", fontSize=9.2, leading=12,
-            textColor=self.colors["muted"], spaceAfter=8
+            "h_meta",
+            parent=base["BodyText"],
+            fontName="SourceSans",
+            fontSize=9.2,
+            leading=12,
+            textColor=self.colors["muted"],
+            spaceAfter=8,
         )
         self.body = ParagraphStyle(
-            "body", parent=base["BodyText"],
-            fontName="SourceSans", fontSize=10, leading=14,
-            textColor=self.colors["ink"]
+            "body",
+            parent=base["BodyText"],
+            fontName="SourceSans",
+            fontSize=10,
+            leading=14,
+            textColor=self.colors["ink"],
         )
         self.meta = ParagraphStyle(
-            "meta", parent=self.body,
-            fontName="SourceSans", fontSize=9.2, leading=12,
-            textColor=self.colors["muted"]
+            "meta",
+            parent=self.body,
+            fontName="SourceSans",
+            fontSize=9.2,
+            leading=12,
+            textColor=self.colors["muted"],
         )
         self.h_sec = ParagraphStyle(
             "h_sec",
@@ -65,8 +81,13 @@ class SimpleTemplate:
         )
 
     def _rule(self, thickness=0.6, space_before=2, space_after=6):
-        return HRFlowable(width="100%", color=self.colors["rule"],
-                          thickness=thickness, spaceBefore=space_before, spaceAfter=space_after)
+        return HRFlowable(
+            width="100%",
+            color=self.colors["rule"],
+            thickness=thickness,
+            spaceBefore=space_before,
+            spaceAfter=space_after,
+        )
 
     def _section_title(self, text: str) -> list:
         from reportlab.platypus import Table, TableStyle
@@ -103,7 +124,15 @@ class SimpleTemplate:
         meta_line = " · ".join([b for b in meta_bits if b])
         if meta_line:
             s.append(Paragraph(meta_line, self.h_meta))
-        s.append(HRFlowable(width="100%", color=self.colors["ink"], thickness=0.7, spaceBefore=2, spaceAfter=8))
+        s.append(
+            HRFlowable(
+                width="100%",
+                color=self.colors["ink"],
+                thickness=0.7,
+                spaceBefore=2,
+                spaceAfter=8,
+            )
+        )
         return s
 
     def _profile(self, data) -> list:
@@ -116,7 +145,7 @@ class SimpleTemplate:
     def _experience(self, data) -> list:
         s: list = []
         s += self._section_title("Experience")
-        for exp in getattr(data, "experiences", []):
+        for exp in getattr(data, "experience", []):
             left = f"{exp.company}" + (f", {exp.location}" if exp.location else "")
             s.append(Paragraph(f"{left} — <b>{exp.job_title}</b>", self.body))
             rng = fmt_range(exp.start_date, exp.end_date)
@@ -152,7 +181,9 @@ class SimpleTemplate:
         for p in getattr(data, "projects", []):
             title = p.name or "Project"
             if getattr(p, "link", None):
-                title = f"<link href='{p.link}'><font color='#6B7280'>{title}</font></link>"
+                title = (
+                    f"<link href='{p.link}'><font color='#6B7280'>{title}</font></link>"
+                )
             s.append(Paragraph(title, self.body))
             if getattr(p, "tech_stack", None):
                 s.append(Paragraph(", ".join(p.tech_stack), self.meta))
@@ -164,7 +195,12 @@ class SimpleTemplate:
     def _skills(self, data) -> list:
         s: list = []
         s += self._section_title("Skills")
-        skills = ", ".join([f"{x.name}{f' ({x.level})' if getattr(x, 'level', None) else ''}" for x in getattr(data, "skills", [])])
+        skills = ", ".join(
+            [
+                f"{x.name}{f' ({x.level})' if getattr(x, 'level', None) else ''}"
+                for x in getattr(data, "skills", [])
+            ]
+        )
         s.append(Paragraph(skills, self.body))
         s.append(Spacer(1, self.GAP_Y))
         return s
@@ -176,7 +212,9 @@ class SimpleTemplate:
         for c in getattr(data, "certificates", []):
             name = c.name or ""
             issuer = c.issuer or ""
-            date_txt = fmt_mmyyyy(c.date_issued) if getattr(c, "date_issued", None) else ""
+            date_txt = (
+                fmt_mmyyyy(c.date_issued) if getattr(c, "date_issued", None) else ""
+            )
             if issuer and getattr(c, "link", None):
                 issuer_html = f"<link href='{c.link}'><font color='{LINK_COLOR}'>{issuer}</font></link>"
             else:
@@ -189,7 +227,12 @@ class SimpleTemplate:
     def _languages(self, data) -> list:
         s: list = []
         s += self._section_title("Languages")
-        langs = ", ".join([f"{l.name}{f' ({l.level})' if getattr(l, 'level', None) else ''}" for l in getattr(data, "languages", [])])
+        langs = ", ".join(
+            [
+                f"{l.name}{f' ({l.level})' if getattr(l, 'level', None) else ''}"
+                for l in getattr(data, "languages", [])
+            ]
+        )
         s.append(Paragraph(langs, self.body))
         s.append(Spacer(1, self.GAP_Y))
         return s
@@ -200,7 +243,9 @@ class SimpleTemplate:
         for sl in getattr(data, "social_links", []):
             label = sl.platform or "Profile"
             if getattr(sl, "url", None):
-                label = f"<link href='{sl.url}'><font color='#6B7280'>{label}</font></link>"
+                label = (
+                    f"<link href='{sl.url}'><font color='#6B7280'>{label}</font></link>"
+                )
             text = label
             if getattr(sl, "description", None):
                 text += f" — {sl.description}"
@@ -212,14 +257,22 @@ class SimpleTemplate:
         story: list = []
         story += self._header(data)
 
-        if getattr(data, "summary", None):         story += self._profile(data)
-        if getattr(data, "experiences", None):     story += self._experience(data)
-        if getattr(data, "education", None):       story += self._education(data)
-        if getattr(data, "projects", None):        story += self._projects(data)
-        if getattr(data, "skills", None):          story += self._skills(data)
-        if getattr(data, "certificates", None):    story += self._certificates(data)
-        if getattr(data, "languages", None):       story += self._languages(data)
-        if getattr(data, "social_links", None):    story += self._social(data)
+        if getattr(data, "summary", None):
+            story += self._profile(data)
+        if getattr(data, "experience", None):
+            story += self._experience(data)
+        if getattr(data, "education", None):
+            story += self._education(data)
+        if getattr(data, "projects", None):
+            story += self._projects(data)
+        if getattr(data, "skills", None):
+            story += self._skills(data)
+        if getattr(data, "certificates", None):
+            story += self._certificates(data)
+        if getattr(data, "languages", None):
+            story += self._languages(data)
+        if getattr(data, "social_links", None):
+            story += self._social(data)
 
         return story
 
@@ -233,4 +286,3 @@ class SimpleTemplate:
             showBoundary=0,
         )
         return [PageTemplate(id="Simple", frames=[full])]
-    

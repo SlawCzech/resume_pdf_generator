@@ -3,10 +3,12 @@ from reportlab import rl_config
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+
 def _fonts_root() -> str:
     base_dir = os.path.dirname(os.path.abspath(__file__))
     default_path = os.path.join(base_dir, "static", "fonts")
     return os.environ.get("APP_FONTS_DIR", default_path)
+
 
 FONTS = {
     "Merriweather": {
@@ -17,17 +19,18 @@ FONTS = {
     },
     "Roboto": {
         "normal": "Roboto/Roboto-Regular.ttf",
-        "bold":   "Roboto/Roboto-Bold.ttf",
+        "bold": "Roboto/Roboto-Bold.ttf",
         "italic": "Roboto/Roboto-Italic.ttf",
         "boldItalic": "Roboto/Roboto-BoldItalic.ttf",
     },
     "SourceSans": {
         "normal": "SourceSans/SourceSans3-Regular.ttf",
-        "bold":   "SourceSans/SourceSans3-Bold.ttf",
+        "bold": "SourceSans/SourceSans3-Bold.ttf",
         "italic": "SourceSans/SourceSans3-It.ttf",
         "boldItalic": "SourceSans/SourceSans3-BoldIt.ttf",
     },
 }
+
 
 def _font_name(family: str, style: str) -> str:
     suffix = {
@@ -37,6 +40,7 @@ def _font_name(family: str, style: str) -> str:
         "boldItalic": "-BoldItalic",
     }[style]
     return f"{family}{suffix}" if suffix else family
+
 
 def register_fonts() -> None:
     root = _fonts_root()

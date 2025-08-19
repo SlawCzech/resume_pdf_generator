@@ -1,0 +1,10 @@
+{
+  "company": "FinData Solutions",
+  "seniority": "Mid/Senior",
+  "work_model": "Hybrid (Warsaw, 3 days on-site)",
+  "contract_type": "B2B",
+  "description": "We are looking for a Data Engineer to join our team responsible for building scalable data pipelines for financial analytics. The role includes designing ETL processes, optimizing data warehouses, and collaborating with analysts.",
+  "requirements": "- 3+ years of experience in data engineering\n- Solid knowledge of SQL and database optimization\n- Experience with Python and libraries like Pandas or Polars\n- Knowledge of cloud platforms (AWS or GCP)",
+  "responsibilities": "- Develop and maintain ETL pipelines\n- Design and optimize data warehouses\n- Collaborate with data scientists and analysts\n- Ensure data quality and reliability",
+  "tech_tags": ["Python", "SQL", "Polars", "AWS", "ETL", "Data Warehousing"]
+}
